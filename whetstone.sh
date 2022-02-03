@@ -7,8 +7,8 @@ Usage: ${0##*/} [option]
   Options:
     --crypto        Install additional packages for crypto pentesting
     --ics           Install additional packages for ICS/SCADA pentesting
-    --dark-theme    Initialize dark theme
-    --light-theme   Initialize light theme
+    --dark          Initialize dark theme
+    --light         Initialize light theme
     --help          Display this message
 
 EOF
@@ -30,9 +30,6 @@ do
             ;;
         light|-light|--light)
             light=true;
-            ;;
-        burp|-burp|--burp)
-            burp=true;
             ;;
         -h|--help|help)
             usage
@@ -451,10 +448,7 @@ wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_1
 unzip ghidra.zip
 ln -s ~/Downloads/ghidra/ghidraRun /usr/local/bin/ghidra
 
-
- 
-
-if [ -z "$ics"]
+if [ -n "$ics"]
 then 
 
     printf '\n============================================================\n'
@@ -485,7 +479,7 @@ then
 
 fi 
 
-if [ -z "$dark" ]
+if [ -n "$dark" ]
 then
 
     printf '\n============================================================\n'
@@ -501,20 +495,17 @@ then
     else
         cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/dusk-4k.png'
     fi
-    gsettings set org.gnome.desktop.background primary-color "#000000"
-    gsettings set org.gnome.desktop.background secondary-color "#000000"
-    gsettings set org.gnome.desktop.background color-shading-type "solid"
-    gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/wallpapers/wallpapers/dusk-4k.png"
-    gsettings set org.gnome.desktop.screensaver picture-uri "file:///usr/share/wallpapers/wallpapers/dusk-4k.png"
-    gsettings set org.gnome.desktop.background picture-options scaled
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s /usr/share/wallpapers/wallpapers/dusk-4k.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor1/image-path -s /usr/share/wallpapers/wallpapers/dusk-4k.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /usr/share/wallpapers/wallpapers/dusk-4k.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace1/last-image -s /usr/share/wallpapers/wallpapers/dusk-4k.png
+    export DISPLAY=:0
+    export XAUTHORITY=/home/kali/.Xauthority
+    export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+    su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s /usr/share/wallpapers/wallpapers/dusk-4k.png'
+    su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor1/image-path -s /usr/share/wallpapers/wallpapers/dusk-4k.png'
+    su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /usr/share/wallpapers/wallpapers/dusk-4k.png'
+    su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace1/last-image -s /usr/share/wallpapers/wallpapers/dusk-4k.png'
 
 fi
 
-if [ -z "$light" ]
+if [ -n "$light" ]
 then
 
     printf '\n============================================================\n'
@@ -530,16 +521,13 @@ then
     else
         cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/dawn-4k.png'
     fi
-    gsettings set org.gnome.desktop.background primary-color "#000000"
-    gsettings set org.gnome.desktop.background secondary-color "#000000"
-    gsettings set org.gnome.desktop.background color-shading-type "solid"
-    gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/wallpapers/wallpapers/dawn-4k.png"
-    gsettings set org.gnome.desktop.screensaver picture-uri "file:///usr/share/wallpapers/wallpapers/dawn-4k.png"
-    gsettings set org.gnome.desktop.background picture-options scaled
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s /usr/share/wallpapers/wallpapers/dawn-4k.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor1/image-path -s /usr/share/wallpapers/wallpapers/dawn-4k.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /usr/share/wallpapers/wallpapers/dawn-4k.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace1/last-image -s /usr/share/wallpapers/wallpapers/dawn-4k.png
+    export DISPLAY=:0
+    export XAUTHORITY=/home/kali/.Xauthority
+    export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+    su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s /usr/share/wallpapers/wallpapers/dawn-4k.png'
+    su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor1/image-path -s /usr/share/wallpapers/wallpapers/dawn-4k.png'
+    su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /usr/share/wallpapers/wallpapers/dawn-4k.png'
+    su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace1/last-image -s /usr/share/wallpapers/wallpapers/dawn-4k.png'
 
 fi
 
@@ -667,7 +655,6 @@ EOF
     gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Terminal.desktop', 'terminator.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Screenshot.desktop', 'sublime_text.desktop', 'boostnote.desktop']"
 
 fi
-
 
 printf '\n============================================================\n'
 printf "[+] Done. Don't forget to reboot! :)\n"
