@@ -28,7 +28,7 @@ Hone your Kali instance to a knife edge sheen. Prepares vanillla Kali for a pent
 	- [LibreOffice](https://www.libreoffice.org/)
 	- [htop](https://htop.dev/)
 	- [Remmina](https://remmina.org/)
-	- [realtek-rtl88xxau-dkms] (ALFA wireless drivers)
+	- [realtek-rtl88xxau-dkms](https://gitlab.com/kalilinux/packages/realtek-rtl88xxau-dkms) (ALFA wireless drivers)
     - [berzerk0's](https://github.com/berzerk0) [Probable-Wordlists](https://github.com/berzerk0/Probable-Wordlists)     	 	
 	- [insidetrust's](https://github.com/insidetrust) [statistically-likely-usernames](https://github.com/insidetrust/statistically-likely-usernames)
     - [Covenant](https://github.com/cobbr/Covenant) 
