@@ -629,7 +629,7 @@ then
     wallpaper_file="$(find . -type f -name dusk-4k.png)"
     if [[ -z "$wallpaper_file" ]]
     then
-        wget -P '/usr/share/wallpapers/wallpapers/' https://raw.githubusercontent.com/illiterateTechpriest/kali-setup-script/master/dusk-4k.png
+        wget -P '/usr/share/wallpapers/wallpapers/' https://raw.githubusercontent.com/illiterateTechpriest/whetstone/master/dusk-4k.png
     else
         cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/dusk-4k.png'
     fi
@@ -659,7 +659,7 @@ then
     wallpaper_file="$(find . -type f -name dawn-4k.png)"
     if [[ -z "$wallpaper_file" ]]
     then
-        wget -P '/usr/share/wallpapers/wallpapers/' https://raw.githubusercontent.com/illiterateTechpriest/kali-setup-script/master/dawn-4k.png
+        wget -P '/usr/share/wallpapers/wallpapers/' https://raw.githubusercontent.com/illiterateTechpriest/whetstone/master/dawn-4k.png
     else
         cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/dawn-4k.png'
     fi
@@ -693,7 +693,7 @@ fi
     wallpaper_file="$(find . -type f -name dusk-4k.png)"
     if [[ -z "$wallpaper_file" ]]
     then
-        wget -P '/usr/share/wallpapers/wallpapers/' https://raw.githubusercontent.com/illiterateTechpriest/kali-setup-script/master/dusk-4k.png
+        wget -P '/usr/share/wallpapers/wallpapers/' https://raw.githubusercontent.com/illiterateTechpriest/whetstone/master/dusk-4k.png
     else
         cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/dusk-4k.png'
     fi
@@ -708,12 +708,8 @@ fi
     xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /usr/share/wallpapers/wallpapers/dusk-4k.png
     xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace1/last-image -s /usr/share/wallpapers/wallpapers/dusk-4k.png
 
-
 fi
 
 printf '\n============================================================\n'
 printf "[+] Done. Don't forget to reboot! :)\n"
-printf "[+] You may also want to install:\n"
-printf '     - BurpSuite Pro\n'
-printf '     - Firefox Add-Ons\n'
 printf '============================================================\n\n'
