@@ -22,7 +22,8 @@ Hone your Kali instance to a knife edge sheen. Prepares vanillla Kali for a pent
 	- [Sublime Text](https://www.sublimetext.com/docs/linux_repositories.html)
 	- [BoostNote](https://github.com/BoostIO/BoostNote-App)
 	- [jq](https://stedolan.github.io/jq/)
-	- [python-is-python3](https://www.kali.org/docs/general-use/python3-transition/)			
+	- [python-is-python3](https://www.kali.org/docs/general-use/python3-transition/)
+	- [gnome-screenshot](https://linux.die.net/man/1/gnome-screenshot)			
 	- [golang](https://go.dev/) (plus environment)
 	- [zmap](https://github.com/zmap/zmap)
 	- [LibreOffice](https://www.libreoffice.org/)
@@ -41,10 +42,10 @@ Hone your Kali instance to a knife edge sheen. Prepares vanillla Kali for a pent
 - Disables auto-lock
 - Enables tap-to-click
 - Initializes Metasploit database
-- Enables details logging of terminal sessions (all output saved to ~/Logs)											!
+- Enables details logging of terminal sessions (all output saved to ~/Logs)											
 ## Optional Features
 - Allows optional installation of the following ICS/SCADA tools 
-    - [ControlThings.io](https://github.com/ControlThings-io/) ICS/SCADA Tools:
+    - [ControlThings.io's](https://github.com/ControlThings-io/) ICS/SCADA Tools:
 		- ctmodbus
     	- ctserial
     	- ctspi
