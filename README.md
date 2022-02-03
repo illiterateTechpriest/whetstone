@@ -32,7 +32,7 @@ Hone your Kali instance to a knife edge sheen. Prepares vanillla Kali for a pent
 	1. jq 	
 	1. python-is-python3												
 	1. golang (plus environment)
-	1. zmap
+	1. zmap()
 	1. LibreOffice
 	1. htop
 	1. Remmina
