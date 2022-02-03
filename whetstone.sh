@@ -67,14 +67,12 @@ mkdir -p ~/Downloads 2>/dev/null
 if [ -n "$DISPLAY" ]
 then
 
-
     printf '\n============================================================\n'
     printf '[+] Enabling Tap-to-click\n'
     printf '============================================================\n\n'
     gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
     xfconf-query -c pointers -p /SynPS2_Synaptics_TouchPad/Properties/libinput_Tapping_Enabled -n -t int -s 1 --create
     xfconf-query -c pointers -p /SynPS2_Synaptics_TouchPad/Properties/Synaptics_Tap_Action -n -s 0 -s 0 -s 0 -s 0 -s 1 -s 3 -s 2 -t int -t int -t int -t int -t int -t int -t int --create
-
 
     printf '\n============================================================\n'
     printf '[+] Disabling Auto-lock, Sleep on AC\n'
@@ -92,7 +90,6 @@ then
     # hibernate when power is critical
     xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/critical-power-action -s 2 --create --type int
 
-
     printf '\n============================================================\n'
     printf '[+] Setting Default Terminal\n'
     printf '============================================================\n\n'
@@ -106,12 +103,10 @@ then
     # disable "close terminal?" prompt
     gsettings set org.gnome.Terminal.Legacy.Settings confirm-close false
 
-
     printf '\n============================================================\n'
     printf '[+] Disabling Animations\n'
     printf '============================================================\n\n'
     gsettings set org.gnome.desktop.interface enable-animations false
-
 
     printf '\n============================================================\n'
     printf '[+] Disabling Terminal Transparency\n'
