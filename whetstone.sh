@@ -9,7 +9,6 @@ Usage: ${0##*/} [option]
     --ics           Install additional packages for ICS/SCADA pentesting
     --dark-theme    Initialize dark theme
     --light-theme   Initialize light theme
-    --no-zmap       Don't install zmap asset inventory
     --help          Display this message
 
 EOF
@@ -20,20 +19,17 @@ exit 0
 while :
 do
     case $1 in
-        crypto|-crypto|--crypto
+        crypto|-crypto|--crypto)
             crypto=true;
             ;;
-        ics|-ics|--ics
+        ics|-ics|--ics)
             ics=true;
             ;;
-        dark|-dark|--dark
+        dark|-dark|--dark)
             dark=true;
             ;;
-        light|-light|--light
+        light|-light|--light)
             light=true;
-            ;;
-        no-zmap|-no-zmap|--no-zmap)
-            no_zmap=true;
             ;;
         burp|-burp|--burp)
             burp=true;
@@ -69,7 +65,6 @@ apt-get update
 
 # make sure Downloads folder exists
 mkdir -p ~/Downloads 2>/dev/null
-
 
 # if we're not on a headless system
 if [ -n "$DISPLAY" ]
@@ -133,15 +128,13 @@ then
 
 fi
 
-
-printf '\n============================================================\n'
-printf '[+] Installing pip\n'
-printf '============================================================\n\n'
+#printf '\n============================================================\n'
+#printf '[+] Installing pip\n'
+#printf '============================================================\n\n'
 #cd /root/Downloads
 #curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 #python3 get-pip.py
-apt-get install python3-pip
-
+#apt-get install python3-pip
 
 printf '\n============================================================\n'
 printf '[+] Disabling LL-MNR\n'
@@ -152,9 +145,8 @@ name=*
 [Network]
 LLMNR=no' > /etc/systemd/network/90-disable-llmnr.network
 
-
 printf '\n============================================================\n'
-printf '[+] Removing the abomination that is gnome-software\n'
+printf '[+] Removing gnome-software\n'
 printf '============================================================\n\n'
 killall gnome-software
 while true
@@ -164,12 +156,11 @@ do
 done
 apt-get remove gnome-software
 
-
 printf '\n============================================================\n'
 printf '[+] Installing:\n'
 printf '     - wireless drivers\n'
 printf '     - golang & environment\n'
-printf '     - docker\n'
+printf '     - docker.io\n'
 printf '     - powershell\n'
 printf '     - terminator\n'
 printf '     - pip & pipenv\n'
@@ -181,9 +172,11 @@ printf '     - tmux\n'
 printf '     - NFS server\n'
 printf '     - DNS Server\n'
 printf '     - hcxtools (hashcat)\n'
+printf '     - vim\n'
 printf '     - jq\n'
-printf '     - python-is-python3'
+printf '     - python-is-python3\n'
 printf '============================================================\n\n'
+
 apt-get install \
     realtek-rtl88xxau-dkms \
     golang \
@@ -201,10 +194,10 @@ apt-get install \
     nfs-kernel-server \
     dnsmasq \
     hcxtools \
-    mosh \
-    vim
+    vim \
     jq \
-    python-is-python3\
+    python-is-python3 \
+
 python2 -m pip install pipenv
 python3 -m pip install pipenv
 apt-get remove mitmproxy
@@ -257,20 +250,17 @@ exportfs -a
 # example NetworkManager.conf line for blacklist interfaces
 fgrep 'unmanaged-devices' &>/dev/null /etc/NetworkManager/NetworkManager.conf || echo -e '[keyfile]\nunmanaged-devices=mac:de:ad:be:ef:de:ad' >> /etc/NetworkManager/NetworkManager.conf
 
-
 printf '\n============================================================\n'
 printf '[+] Updating System\n'
 printf '============================================================\n\n'
 apt-get update
 apt-get upgrade
 
-
 printf '\n============================================================\n'
 printf '[+] Installing Bettercap\n'
 printf '============================================================\n\n'
 apt-get install libnetfilter-queue-dev libpcap-dev libusb-1.0-0-dev
 go get -v github.com/bettercap/bettercap
-
 
 printf '\n============================================================\n'
 printf '[+] Installing EapHammer\n'
@@ -285,12 +275,10 @@ sed -i 's/.*input.*Do you wish to proceed.*/    if False:/g' kali-setup
 ./kali-setup
 ln -s ~/Downloads/eaphammer/eaphammer /usr/local/bin/eaphammer
 
-
 printf '\n============================================================\n'
 printf '[+] Installing Gowitness\n'
 printf '============================================================\n\n'
 go get -v github.com/sensepost/gowitness
-
 
 printf '\n============================================================\n'
 printf '[+] Installing MAN-SPIDER\n'
@@ -299,12 +287,10 @@ cd ~/Downloads
 git clone https://github.com/blacklanternsecurity/MANSPIDER
 cd MANSPIDER && python3 -m pipenv install -r requirements.txt
 
-
 printf '\n============================================================\n'
 printf '[+] Installing bloodhound.py\n'
 printf '============================================================\n\n'
 pip install bloodhound
-
 
 printf '\n============================================================\n'
 printf '[+] Installing PCredz\n'
@@ -315,7 +301,6 @@ cd ~/Downloads
 git clone https://github.com/lgandx/PCredz.git
 ln -s ~/Downloads/PCredz/Pcredz /usr/local/bin/pcredz
 
-
 printf '\n============================================================\n'
 printf '[+] Installing EavesARP\n'
 printf '============================================================\n\n'
@@ -323,7 +308,6 @@ cd ~/Downloads
 git clone https://github.com/mmatoscom/eavesarp
 cd eavesarp && python3 -m pip install -r requirements.txt
 cd && ln -s ~/Downloads/eavesarp/eavesarp.py /usr/local/bin/eavesarp
-
 
 printf '\n============================================================\n'
 printf '[+] Installing CrackMapExec\n'
@@ -338,7 +322,6 @@ python3 -m pipenv run python setup.py install
 ln -s ~/.local/share/virtualenvs/$(ls /root/.local/share/virtualenvs | grep CrackMapExec | head -n 1)/bin/cme ~/usr/local/bin/cme
 apt-get install crackmapexec
 
-
 printf '\n============================================================\n'
 printf '[+] Installing Impacket\n'
 printf '============================================================\n\n'
@@ -346,7 +329,6 @@ cd ~/Downloads
 git clone https://github.com/CoreSecurity/impacket.git
 cd impacket && python3 -m pipenv install
 python3 -m pipenv run python setup.py install
-
 
 printf '\n============================================================\n'
 printf '[+] Enabling bash session logging\n'
@@ -396,7 +378,6 @@ fi'
 grep -q 'NORMAL_LOGGING' "$HOME/.bashrc" || echo "$normal_log_script" >> "$HOME/.bashrc"
 grep -q 'NORMAL_LOGGING' "$HOME/.zshrc" || echo "$normal_log_script" >> "$HOME/.zshrc"
 
-
 printf '\n============================================================\n'
 printf '[+] Initializing Metasploit Database\n'
 printf '============================================================\n\n'
@@ -404,36 +385,32 @@ systemctl start postgresql
 systemctl enable postgresql
 msfdb init
 
-
 printf '\n============================================================\n'
 printf '[+] Installing SecLists\n'
 printf '============================================================\n\n'
 cd /usr/share/wordlists/
-git clone https://github.com/danielmiessler/SecLists.git
-
+#git clone https://github.com/danielmiessler/SecLists.git
 
 printf '\n============================================================\n'
 printf '[+] Installing Probable-Wordlists-v2.0\n'
 printf '============================================================\n\n'
 cd /usr/share/wordlists/
-git clone https://github.com/berzerk0/Probable-Wordlists.git
-
+#git clone https://github.com/berzerk0/Probable-Wordlists.git
 
 printf '\n============================================================\n'
 printf '[+] Installing Statistically-Likely-Usernames\n'
 printf '============================================================\n\n'
 cd /usr/share/wordlists/
-git clone https://github.com/insidetrust/statistically-likely-usernames.git
+#git clone https://github.com/insidetrust/statistically-likely-usernames.git
 
 
 printf '\n============================================================\n'
 printf '[+] Unzipping RockYou\n'
 printf '============================================================\n\n'
-gunzip /usr/share/wordlists/rockyou.txt.gz 2>/dev/null
+#gunzip /usr/share/wordlists/rockyou.txt.gz 2>/dev/null
 
 # why?
 # ln -s /usr/share/wordlists ~/Downloads/wordlists 2>/dev/null
-
 
 printf '\n============================================================\n'
 printf '[+] Installing Hatecrack\n'
@@ -450,6 +427,11 @@ git clone https://github.com/trustedsec/unicorn.git
 ln -s ~/Downloads/unicorn/unicorn.py /usr/local/bin/unicorn
 
 printf '\n============================================================\n'
+printf '[+] Installing Donut\n'
+printf '============================================================\n\n'
+pip3 install donut-shellcode
+
+printf '\n============================================================\n'
 printf '[+] Installing Covenant\n'
 printf '============================================================\n\n'
 cd ~/Downloads
@@ -460,17 +442,105 @@ apt-get install -y dotnet-sdk-3.1
 git clone --recurse-submodules https://github.com/cobbr/Covenant
 echo "alias covenant='cd ~/Downloads/Covenant/Covenant && dotnet run'" >> ~/.bashrc
 
+printf '\n============================================================\n'
+printf '[+] Installing Ghidra\n'
+printf '============================================================\n\n'
+cd ~/Downloads
+apt-get install default-jdk
+wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_10.1.2_build/ghidra_10.1.2_PUBLIC_20220125.zip -o ghidra.zip
+unzip ghidra.zip
+ln -s ~/Downloads/ghidra/ghidraRun /usr/local/bin/ghidra
 
-if [ -z "$no_zmap" ]
+
+ 
+
+if [ -z "$ics"]
+then 
+
+    printf '\n============================================================\n'
+    printf '[+] Installing Controlthings.io ICS/SCADA Tools:\n'
+    printf '     - ctmodbus\n'
+    printf '     - ctserial\n'
+    printf '     - ctspi\n'
+    printf '     - cti2c\n'
+    printf '============================================================\n\n'
+    # install ctmodbus
+    cd ~/Downloads
+    git clone https://github.com/ControlThings-io/ctmodbus
+    cd ControlThings-io/
+    pip3 install ctmodbus
+    ln -s ~/Downloads/ctmodbus/ctmodbus.py /usr/local/bin/ctmodbus
+    # install ctserial
+    cd ~/Downloads
+    git clone https://github.com/ControlThings-io/ctserial
+    ln -s ~/Downloads/ctserial/ctserial.py /usr/local/bin/ctserial
+    # install ctspi
+    cd ~/Downloads
+    git clone https://github.com/ControlThings-io/ctspi
+    ln -s ~/Downloads/ctspi/ctspi.py /usr/local/bin/ctspi
+    # install cti2c
+    cd ~/Downloads
+    git clone https://github.com/ControlThings-io/cti2c
+    ln -s ~/Downloads/cti2c/cti2c.py /usr/local/bin/cti2c
+
+fi 
+
+if [ -z "$dark" ]
 then
 
     printf '\n============================================================\n'
-    printf '[+] Installing Zmap Asset Inventory\n'
+    printf '[+] Setting Dark Theme\n'
     printf '============================================================\n\n'
-    cd /opt
-    mv zmap-asset-inventory "zmap-asset-inventory.bak$(date +%s)" &> /dev/null
-    git clone https://github.com/blacklanternsecurity/zmap-asset-inventory
-    docker build --network host -t zmap-assets zmap-asset-inventory
+    # dark theme
+    #gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    mkdir -p '/usr/share/wallpapers/wallpapers/' &>/dev/null
+    wallpaper_file="$(find . -type f -name dusk-4k.png)"
+    if [[ -z "$wallpaper_file" ]]
+    then
+        wget -P '/usr/share/wallpapers/wallpapers/' https://raw.githubusercontent.com/illiterateTechpriest/whetstone/master/dusk-4k.png
+    else
+        cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/dusk-4k.png'
+    fi
+    gsettings set org.gnome.desktop.background primary-color "#000000"
+    gsettings set org.gnome.desktop.background secondary-color "#000000"
+    gsettings set org.gnome.desktop.background color-shading-type "solid"
+    gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/wallpapers/wallpapers/dusk-4k.png"
+    gsettings set org.gnome.desktop.screensaver picture-uri "file:///usr/share/wallpapers/wallpapers/dusk-4k.png"
+    gsettings set org.gnome.desktop.background picture-options scaled
+    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s /usr/share/wallpapers/wallpapers/dusk-4k.png
+    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor1/image-path -s /usr/share/wallpapers/wallpapers/dusk-4k.png
+    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /usr/share/wallpapers/wallpapers/dusk-4k.png
+    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace1/last-image -s /usr/share/wallpapers/wallpapers/dusk-4k.png
+
+fi
+
+if [ -z "$light" ]
+then
+
+    printf '\n============================================================\n'
+    printf '[+] Setting Light Theme\n'
+    printf '============================================================\n\n'
+    # dark theme
+    #gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    mkdir -p '/usr/share/wallpapers/wallpapers/' &>/dev/null
+    wallpaper_file="$(find . -type f -name dawn-4k.png)"
+    if [[ -z "$wallpaper_file" ]]
+    then
+        wget -P '/usr/share/wallpapers/wallpapers/' https://raw.githubusercontent.com/illiterateTechpriest/whetstone/master/dawn-4k.png
+    else
+        cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/dawn-4k.png'
+    fi
+    gsettings set org.gnome.desktop.background primary-color "#000000"
+    gsettings set org.gnome.desktop.background secondary-color "#000000"
+    gsettings set org.gnome.desktop.background color-shading-type "solid"
+    gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/wallpapers/wallpapers/dawn-4k.png"
+    gsettings set org.gnome.desktop.screensaver picture-uri "file:///usr/share/wallpapers/wallpapers/dawn-4k.png"
+    gsettings set org.gnome.desktop.background picture-options scaled
+    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s /usr/share/wallpapers/wallpapers/dawn-4k.png
+    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor1/image-path -s /usr/share/wallpapers/wallpapers/dawn-4k.png
+    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /usr/share/wallpapers/wallpapers/dawn-4k.png
+    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace1/last-image -s /usr/share/wallpapers/wallpapers/dawn-4k.png
+
 fi
 
 # if we're not on a headless system
@@ -502,7 +572,7 @@ then
     cd /opt
     wget "$release_url"
     unzip -o 'BloodHound-linux-x64.zip'
-    rm 'BloodHound-linux-x64.zip'
+    rm 'BloodHound-linux-x64.zip'    
 
     # fix white screen issue
     echo -e '#!/bin/bash\n/opt/BloodHound-linux-x64/BloodHound --no-sandbox $@' > /usr/local/bin/bloodhound
@@ -589,94 +659,6 @@ EOF
     rm boostnote.deb
 
 
-if [ -z "$ics"]
-then 
-
-    printf '\n============================================================\n'
-    printf '[+] Installing Controlthings.io ICS/SCADA Tools\n'
-    printf '============================================================\n\n'
-    # install ctmodbus
-    cd ~/Downloads
-    git clone https://github.com/ControlThings-io/ctmodbus
-    cd ControlThings-io/
-    pip3 install ctmodbus
-    ln -s ~/Downloads/ctmodbus/ctmodbus.py /usr/local/bin/ctmodbus
-    # install ctserial
-    cd ~/Downloads
-    git clone https://github.com/ControlThings-io/ctserial
-    ln -s ~/Downloads/ctserial/ctserial.py /usr/local/bin/ctserial
-    # install ctspi
-    cd ~/Downloads
-    git clone https://github.com/ControlThings-io/ctspi
-    ln -s ~/Downloads/ctspi/ctspi.py /usr/local/bin/ctspi
-    # install cti2c
-    cd ~/Downloads
-    git clone https://github.com/ControlThings-io/cti2c
-    ln -s ~/Downloads/ctspi/ctspi.py /usr/local/bin/ctspi
-
-fi 
-
-
-if [ -z "$dark" ]
-then
-
-    printf '\n============================================================\n'
-    printf '[+] Setting Dark Theme\n'
-    printf '============================================================\n\n'
-    # dark theme
-    #gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-    mkdir -p '/usr/share/wallpapers/wallpapers/' &>/dev/null
-    wallpaper_file="$(find . -type f -name dusk-4k.png)"
-    if [[ -z "$wallpaper_file" ]]
-    then
-        wget -P '/usr/share/wallpapers/wallpapers/' https://raw.githubusercontent.com/illiterateTechpriest/whetstone/master/dusk-4k.png
-    else
-        cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/dusk-4k.png'
-    fi
-    gsettings set org.gnome.desktop.background primary-color "#000000"
-    gsettings set org.gnome.desktop.background secondary-color "#000000"
-    gsettings set org.gnome.desktop.background color-shading-type "solid"
-    gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/wallpapers/wallpapers/dusk-4k.png"
-    gsettings set org.gnome.desktop.screensaver picture-uri "file:///usr/share/wallpapers/wallpapers/dusk-4k.png"
-    gsettings set org.gnome.desktop.background picture-options scaled
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s /usr/share/wallpapers/wallpapers/dusk-4k.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor1/image-path -s /usr/share/wallpapers/wallpapers/dusk-4k.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /usr/share/wallpapers/wallpapers/dusk-4k.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace1/last-image -s /usr/share/wallpapers/wallpapers/dusk-4k.png
-
-fi
-
-
-if [ -z "$light" ]
-then
-
-    printf '\n============================================================\n'
-    printf '[+] Setting Light Theme\n'
-    printf '============================================================\n\n'
-    # dark theme
-    #gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-    mkdir -p '/usr/share/wallpapers/wallpapers/' &>/dev/null
-    wallpaper_file="$(find . -type f -name dawn-4k.png)"
-    if [[ -z "$wallpaper_file" ]]
-    then
-        wget -P '/usr/share/wallpapers/wallpapers/' https://raw.githubusercontent.com/illiterateTechpriest/whetstone/master/dawn-4k.png
-    else
-        cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/dawn-4k.png'
-    fi
-    gsettings set org.gnome.desktop.background primary-color "#000000"
-    gsettings set org.gnome.desktop.background secondary-color "#000000"
-    gsettings set org.gnome.desktop.background color-shading-type "solid"
-    gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/wallpapers/wallpapers/dawn-4k.png"
-    gsettings set org.gnome.desktop.screensaver picture-uri "file:///usr/share/wallpapers/wallpapers/dawn-4k.png"
-    gsettings set org.gnome.desktop.background picture-options scaled
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s /usr/share/wallpapers/wallpapers/dawn-4k.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor1/image-path -s /usr/share/wallpapers/wallpapers/dawn-4k.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /usr/share/wallpapers/wallpapers/dawn-4k.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace1/last-image -s /usr/share/wallpapers/wallpapers/dawn-4k.png
-
-fi
-
-
     printf '\n============================================================\n'
     printf '[+] Cleaning Up\n'
     printf '============================================================\n\n'
@@ -684,32 +666,12 @@ fi
     rmdir ~/Music ~/Public ~/Videos ~/Templates ~/Desktop &>/dev/null
     gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Terminal.desktop', 'terminator.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Screenshot.desktop', 'sublime_text.desktop', 'boostnote.desktop']"
 
-    printf '\n============================================================\n'
-    printf '[+] Setting Theme\n'
-    printf '============================================================\n\n'
-    # dark theme
-    #gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-    mkdir -p '/usr/share/wallpapers/wallpapers/' &>/dev/null
-    wallpaper_file="$(find . -type f -name dusk-4k.png)"
-    if [[ -z "$wallpaper_file" ]]
-    then
-        wget -P '/usr/share/wallpapers/wallpapers/' https://raw.githubusercontent.com/illiterateTechpriest/whetstone/master/dusk-4k.png
-    else
-        cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/dusk-4k.png'
-    fi
-    gsettings set org.gnome.desktop.background primary-color "#000000"
-    gsettings set org.gnome.desktop.background secondary-color "#000000"
-    gsettings set org.gnome.desktop.background color-shading-type "solid"
-    gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/wallpapers/wallpapers/dusk-4k.png"
-    gsettings set org.gnome.desktop.screensaver picture-uri "file:///usr/share/wallpapers/wallpapers/dusk-4k.png"
-    gsettings set org.gnome.desktop.background picture-options scaled
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s /usr/share/wallpapers/wallpapers/dusk-4k.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor1/image-path -s /usr/share/wallpapers/wallpapers/dusk-4k.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /usr/share/wallpapers/wallpapers/dusk-4k.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace1/last-image -s /usr/share/wallpapers/wallpapers/dusk-4k.png
-
 fi
+
 
 printf '\n============================================================\n'
 printf "[+] Done. Don't forget to reboot! :)\n"
+printf "[+] You may also want to install:\n"
+printf '     - BurpSuite Pro\n'
+printf '     - Firefox Add-Ons\n'
 printf '============================================================\n\n'
