@@ -67,14 +67,12 @@ mkdir -p ~/Downloads 2>/dev/null
 if [ -n "$DISPLAY" ]
 then
 
-
     printf '\n============================================================\n'
     printf '[+] Enabling Tap-to-click\n'
     printf '============================================================\n\n'
     gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
     xfconf-query -c pointers -p /SynPS2_Synaptics_TouchPad/Properties/libinput_Tapping_Enabled -n -t int -s 1 --create
     xfconf-query -c pointers -p /SynPS2_Synaptics_TouchPad/Properties/Synaptics_Tap_Action -n -s 0 -s 0 -s 0 -s 0 -s 1 -s 3 -s 2 -t int -t int -t int -t int -t int -t int -t int --create
-
 
     printf '\n============================================================\n'
     printf '[+] Disabling Auto-lock, Sleep on AC\n'
@@ -112,7 +110,6 @@ then
     printf '============================================================\n\n'
     gsettings set org.gnome.desktop.interface enable-animations false
 
-
     printf '\n============================================================\n'
     printf '[+] Disabling Terminal Transparency\n'
     printf '============================================================\n\n'
@@ -121,7 +118,6 @@ then
     gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" use-transparent-background false
     # bring back minimize/maxminize buttons
     gsettings set org.gnome.desktop.wm.preferences button-layout appmenu:minimize,maximize,close
-
 
 fi
 
