@@ -446,30 +446,85 @@ if [ -n "$ics"]
 then 
 
     printf '\n============================================================\n'
-    printf '[+] Installing Controlthings.io ICS/SCADA Tools:\n'
+    printf '[+] Installing Controlthings.io Suite & other ICS tools:\n'
     printf '     - ctmodbus\n'
     printf '     - ctserial\n'
     printf '     - ctspi\n'
     printf '     - cti2c\n'
+    printf '     - GRASSMARLIN\n'
+    printf '     - killerbee\n'
+    printf '     - mbtget\n'
+    printf '     - python-snap7\n'
+    printf '     - plcscan\n'
+    printf "     - scadastrangelove's scadapass wordlist\n"
+    printf '     - s7-cracker.py\n'
+    printf '     - s7scan\n'
     printf '============================================================\n\n'
+    
     # install ctmodbus
     cd ~/Downloads
     git clone https://github.com/ControlThings-io/ctmodbus
     cd ControlThings-io/
     pip3 install ctmodbus
     ln -s ~/Downloads/ctmodbus/ctmodbus.py /usr/local/bin/ctmodbus
+
     # install ctserial
     cd ~/Downloads
     git clone https://github.com/ControlThings-io/ctserial
     ln -s ~/Downloads/ctserial/ctserial.py /usr/local/bin/ctserial
+
     # install ctspi
     cd ~/Downloads
     git clone https://github.com/ControlThings-io/ctspi
     ln -s ~/Downloads/ctspi/ctspi.py /usr/local/bin/ctspi
+
     # install cti2c
     cd ~/Downloads
     git clone https://github.com/ControlThings-io/cti2c
     ln -s ~/Downloads/cti2c/cti2c.py /usr/local/bin/cti2c
+
+    # install plcscan
+    cd ~/Downloads
+    git clone https://github.com/meeas/plcscan.git
+    ln -s ~/Downloads/plcscan/plcscan.py /usr/local/bin/plcscan
+
+    # install mbtget
+    cd ~/Downloads
+    git clone https://github.com/sourceperl/mbtget.git
+    cd mbtget
+    perl Makefile.PL
+    make
+    sudo make install
+
+    # install GrassMarlin
+    cd ~/Downloads
+    wget -O grassmarlin.deb https://github.com/nsacyber/GRASSMARLIN/releases/download/v3.2.1/grassmarlin_3.2.1.kali-1_amd64.deb -o 
+    dpkg -i grassmarlin.deb
+    rm grassmarlin.deb
+
+    # install s7scan
+    cd ~/Downloads
+    git clone https://github.com/klsecservices/s7scan.git
+    ln -s ~/Downloads/s7scan/s7scan.py /usr/local/bin/s7scan
+
+    # install s7-cracker.py
+    cd ~/Downloads
+    wget -O s7-cracker.py https://raw.githubusercontent.com/hslatman/awesome-industrial-control-system-security/main/source/s7-cracker.py
+    ln -s ~/Downloads/s7-cracker.py /usr/local/bin/s7-cracker
+
+    # install python-snap7
+    pip install python-snap7
+
+    # download scadastrangelove's scadapass wordlist
+    cd /usr/share/wordlists/ 
+    wget -O scadapass.csv https://raw.githubusercontent.com/scadastrangelove/SCADAPASS/master/scadapass.csv
+
+    # install killerbee
+    cd ~/Downloads
+    apt-get install python-usb python-crypto python-serial python-dev libgcrypt-dev
+    git clone https://github.com/riverloopsec/killerbee.git
+    cd killerbee/
+    python3 setup.py install
 
 fi 
 
@@ -646,13 +701,8 @@ EOF
     printf '============================================================\n\n'
     updatedb
     rmdir ~/Music ~/Public ~/Videos ~/Templates ~/Desktop &>/dev/null
-    gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Terminal.desktop', 'terminator.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Screenshot.desktop', 'sublime_text.desktop', 'boostnote.desktop']"
-
 fi
 
 printf '\n============================================================\n'
-printf "[+] Done. Don't forget to reboot! :)\n"
-printf "[+] You may also want to install:\n"
-printf '     - BurpSuite Pro\n'
-printf '     - Firefox Add-Ons\n'
+printf "[+] Done.\n"
 printf '============================================================\n\n'

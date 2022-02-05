@@ -1,8 +1,13 @@
-# Kali Whetstone Script
+# Whetstone
 
-Hone your Kali instance to a knife edge sheen. Prepares vanillla Kali for a pentest by enabling session logging, installing additional tools, making common configuration changes, and initializing common services.
+Hone Kali to a knife edge sheen. Prepares for a pentest by enabling session logging, installing additional tools, making common configuration changes, and initializing common services.
 
-## NOTE: Must be run as root
+## Eat me, drink me, run me as root!
+
+```sh
+sudo -i
+curl -k -s https://raw.githubusercontent.com/illiterateTechpriest/whetstone/main/whetstone.sh | bash
+```
 
 ## Default Features:
 
@@ -37,19 +42,32 @@ Hone your Kali instance to a knife edge sheen. Prepares vanillla Kali for a pent
     - [Hatecrack](https://github.com/trustedsec/hate_crack)                                      
     - [Unicorn](https://github.com/trustedsec/unicorn)  
 	- [Ghidra](https://ghidra-sre.org/) 	
+
 - Updates system
 - Removes gnome-software
 - Disables auto-lock
 - Enables tap-to-click
 - Initializes Metasploit database
 - Enables details logging of terminal sessions (all output saved to ~/Logs)											
+
 ## Optional Features
+
 - Allows optional installation of the following ICS/SCADA tools 
     - [ControlThings.io's](https://github.com/ControlThings-io/) ICS/SCADA Tools:
 		- ctmodbus
     	- ctserial
     	- ctspi
     	- cti2c
+	- [killerbee](https://github.com/riverloopsec/killerbee)
+	- [plcscan](https://github.com/meeas/plcscan)
+	- [mbtget](https://github.com/sourceperl/mbtget)
+	- [GRASSMARLIN](https://github.com/nsacyber/GRASSMARLIN)
+	- [s7-cracker.py](https://raw.githubusercontent.com/hslatman/awesome-industrial-control-system-security/main/source/s7-cracker.py)
+	- [s7scan](https://github.com/klsecservices/s7scan)
+	- [python-snap7](https://github.com/gijzelaerr/python-snap7)
+
 - Allows optional installation of the following crypto auditing tools:
 	- [HalbornSecurity's](https://github.com/HalbornSecurity): [burp-eth](https://github.com/HalbornSecurity/burp-eth) BurpSuite extension
-- Invoke a suitable theme according to your mood. Aesthetic is important! 
+
+- Invoke a suitable theme according to your mood. Aesthetic is important!
+	- Are you feeling ```--light``` or ```--dark``` today?
