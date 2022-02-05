@@ -66,7 +66,7 @@ curl -k -s https://raw.githubusercontent.com/illiterateTechpriest/whetstone/main
 	- [python-snap7](https://github.com/gijzelaerr/python-snap7)
 
 - ```--crypto``` enables optional installation of the following crypto auditing tools:
-	- [HalbornSecurity's](https://github.com/HalbornSecurity): [burp-eth](https://github.com/HalbornSecurity/burp-eth) BurpSuite extension
+	- [HalbornSecurity's](https://github.com/HalbornSecurity) [burp-eth](https://github.com/HalbornSecurity/burp-eth) BurpSuite extension
 
 - Invoke a suitable theme according to your mood. Aesthetic is important!
 	- Are you feeling ```--light``` or ```--dark``` today?
