@@ -51,8 +51,7 @@ curl -k -s https://raw.githubusercontent.com/illiterateTechpriest/whetstone/main
 
 ## Optional Features
 
-- Allows optional installation of the following ICS/SCADA tools:
-	- ```--ics```
+- ```--ics``` enables optional installation of the following ICS/SCADA tools:
     - [ControlThings.io's](https://github.com/ControlThings-io/) ICS/SCADA Tools:
 		- ctmodbus
     	- ctserial
@@ -66,8 +65,7 @@ curl -k -s https://raw.githubusercontent.com/illiterateTechpriest/whetstone/main
 	- [s7scan](https://github.com/klsecservices/s7scan)
 	- [python-snap7](https://github.com/gijzelaerr/python-snap7)
 
-- Allows optional installation of the following crypto auditing tools:
-	- WAGMI ```--crypto```
+- ```--crypto``` enables optional installation of the following crypto auditing tools:
 	- [HalbornSecurity's](https://github.com/HalbornSecurity): [burp-eth](https://github.com/HalbornSecurity/burp-eth) BurpSuite extension
 
 - Invoke a suitable theme according to your mood. Aesthetic is important!
