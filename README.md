@@ -1,8 +1,13 @@
-# Kali Whetstone Script
+# Whetstone
 
-Hone your Kali instance to a knife edge sheen. Prepares vanillla Kali for a pentest by enabling session logging, installing additional tools, making common configuration changes, and initializing common services.
+Hone Kali to a knife edge sheen. Prepares for a pentest by enabling session logging, installing additional tools, making common configuration changes, and initializing common services.
 
-## NOTE: Must be run as root
+## Must be run as root
+
+```sh
+sudo -i
+curl -k -s https://raw.githubusercontent.com/illiterateTechpriest/whetstone/main/whetstone.sh | bash
+```
 
 ## Default Features:
 
