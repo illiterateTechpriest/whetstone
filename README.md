@@ -4,9 +4,8 @@ Hone Kali to a knife edge sheen. Prepares for a pentest by enabling session logg
 
 ## Eat me, drink me, run me as root!
 
-```sh
-sudo -i
-curl -k -s https://raw.githubusercontent.com/illiterateTechpriest/whetstone/main/whetstone.sh | bash
+```sudo -i
+curl -k -s https://raw.githubusercontent.com/illiterateTechpriest/whetstone/main/whetstone.sh  | bash
 ```
 
 ## Default Features:
@@ -48,11 +47,12 @@ curl -k -s https://raw.githubusercontent.com/illiterateTechpriest/whetstone/main
 - Disables auto-lock
 - Enables tap-to-click
 - Initializes Metasploit database
-- Enables details logging of terminal sessions (all output saved to ~/Logs)											
+- Enables details logging of terminal sessions (all output saved to ~/Logs)					
 
 ## Optional Features
 
-- Allows optional installation of the following ICS/SCADA tools 
+- Allows optional installation of the following ICS/SCADA tools:
+	- ```--ics```
     - [ControlThings.io's](https://github.com/ControlThings-io/) ICS/SCADA Tools:
 		- ctmodbus
     	- ctserial
@@ -67,6 +67,7 @@ curl -k -s https://raw.githubusercontent.com/illiterateTechpriest/whetstone/main
 	- [python-snap7](https://github.com/gijzelaerr/python-snap7)
 
 - Allows optional installation of the following crypto auditing tools:
+	- WAGMI ```--crypto```
 	- [HalbornSecurity's](https://github.com/HalbornSecurity): [burp-eth](https://github.com/HalbornSecurity/burp-eth) BurpSuite extension
 
 - Invoke a suitable theme according to your mood. Aesthetic is important!
