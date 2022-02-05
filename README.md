@@ -68,10 +68,6 @@ curl -k -s https://raw.githubusercontent.com/illiterateTechpriest/whetstone/main
 
 - Allows optional installation of the following crypto auditing tools:
 	- [HalbornSecurity's](https://github.com/HalbornSecurity): [burp-eth](https://github.com/HalbornSecurity/burp-eth) BurpSuite extension
-<<<<<<< HEAD
 
 - Invoke a suitable theme according to your mood. Aesthetic is important!
 	- Are you feeling ```--light``` or ```--dark``` today?
-=======
-- Invoke a suitable theme according to your mood. Aesthetic is important! 
->>>>>>> ec5c19e07827b2e8b8396f49008684d54784cd73
