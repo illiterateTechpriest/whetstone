@@ -148,46 +148,52 @@ done
 apt-get remove gnome-software
 
 printf '\n============================================================\n'
-printf '[+] Installing:\n'
-printf '     - wireless drivers\n'
-printf '     - golang & environment\n'
-printf '     - docker.io\n'
-printf '     - powershell\n'
-printf '     - terminator\n'
-printf '     - pip & pipenv\n'
-printf '     - patator\n'
-printf '     - zmap\n'
-printf '     - htop\n'
-printf '     - mosh\n'
-printf '     - tmux\n'
-printf '     - NFS server\n'
-printf '     - DNS Server\n'
-printf '     - hcxtools (hashcat)\n'
-printf '     - vim\n'
-printf '     - jq\n'
-printf '     - python-is-python3\n'
+printf '[+] Installing the essentials:\n'
+printf '     - dnsmasq \n'
+printf '     - docker.io \n'
+printf '     - golang \n'
+printf '     - hcxtools \n'
+printf '     - htop \n'
+printf '     - jq \n'
+printf '     - mosh \n'
+printf '     - net-tools \n'
+printf '     - nfs-kernel-server \n'
+printf '     - patator \n'
+printf '     - powershell \n'
+printf '     - powershell-empire \n'
+printf '     - python3-dev \n'
+printf '     - python3-pip \n'
+printf '     - python-is-python3 \n'
+printf '     - realtek-rtl88xxau-dkms \n'
+printf '     - starkiller \n'
+printf '     - terminator \n'
+printf '     - tmux \n'
+printf '     - vim \n'
+printf '     - zmap \n'
 printf '============================================================\n\n'
 
 apt-get install \
-    realtek-rtl88xxau-dkms \
-    golang \
+    dnsmasq \
     docker.io \
+    golang \
+    hcxtools \
+    htop \
+    jq \
+    mosh \
+    net-tools \
+    nfs-kernel-server \
+    patator \
     powershell \
-    terminator \
+    powershell-empire \
     python3-dev \
     python3-pip \
-    patator \
-    net-tools \
-    zmap \
-    htop \
-    mosh \
-    tmux \
-    nfs-kernel-server \
-    dnsmasq \
-    hcxtools \
-    vim \
-    jq \
     python-is-python3 \
+    realtek-rtl88xxau-dkms \
+    starkiller \
+    terminator \
+    tmux \
+    vim \
+    zmap \
 
 python2 -m pip install pipenv
 python3 -m pip install pipenv
