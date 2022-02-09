@@ -707,8 +707,8 @@ printf '[+] Cleaning Up\n'
 printf '     - Running Final Upgrade, Autoclean & Autoremove\n'
 printf '     - Deleting unecessary folders\n'
 printf '============================================================\n\n'
+apt-get update
 apt-get upgrade
-apt-get autoremove
 apt-get autoclean
 rmdir ~/Music ~/Public ~/Videos ~/Templates ~/Desktop &>/dev/null
 updatedb
