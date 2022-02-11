@@ -557,6 +557,8 @@ then
     su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor1/image-path -s /usr/share/wallpapers/wallpapers/dusk-4k.png'
     su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /usr/share/wallpapers/wallpapers/dusk-4k.png'
     su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace1/last-image -s /usr/share/wallpapers/wallpapers/dusk-4k.png'
+    su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/image-style -s 3'
+    su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace1/image-style -s 3'
 
 fi
 
@@ -583,6 +585,8 @@ then
     su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor1/image-path -s /usr/share/wallpapers/wallpapers/dawn-4k.png'
     su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /usr/share/wallpapers/wallpapers/dawn-4k.png'
     su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace1/last-image -s /usr/share/wallpapers/wallpapers/dawn-4k.png'
+    su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/image-style -s 3'
+    su kali -c 'xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace1/image-style -s 3'
 
 fi
 
