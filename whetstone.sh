@@ -437,7 +437,7 @@ sudo dpkg -i packages-microsoft-prod.deb
 rm packages-microsoft-prod.deb
 apt-get install -y dotnet-sdk-3.1
 git clone --recurse-submodules https://github.com/cobbr/Covenant
-echo "alias covenant='cd ~/Downloads/Covenant/Covenant && dotnet run'" >> ~/.bashrc
+echo "alias covenant='cd ~/Downloads/Covenant/Covenant && dotnet run'" >> ~/.zshrc
 
 printf '\n============================================================\n'
 printf '[+] Installing Ghidra\n'
@@ -700,14 +700,18 @@ EOF
     apt-get install gconf2 gvfs-bin
     dpkg -i boostnote.deb
     rm boostnote.deb
-
-
-    printf '\n============================================================\n'
-    printf '[+] Cleaning Up\n'
-    printf '============================================================\n\n'
-    updatedb
-    rmdir ~/Music ~/Public ~/Videos ~/Templates ~/Desktop &>/dev/null
 fi
+
+printf '\n============================================================\n'
+printf '[+] Cleaning Up\n'
+printf '     - Running Final Upgrade, Autoclean & Autoremove\n'
+printf '     - Deleting unecessary folders\n'
+printf '============================================================\n\n'
+apt-get update
+apt-get upgrade
+apt-get autoclean
+rmdir ~/Music ~/Public ~/Videos ~/Templates ~/Desktop &>/dev/null
+updatedb
 
 printf '\n============================================================\n'
 printf "[+] Done.\n"
