@@ -2,10 +2,23 @@
 
 Hone Kali to a knife edge sheen. Prepares for a pentest by enabling session logging, installing additional tools, making common configuration changes, and initializing common services.
 
+Credit: [BlackLanternSecurity](https://github.com/blacklanternsecurity/kali-setup-script)
+
 ## Eat me, drink me, run me as root!
 
 ```sudo -i
 curl -k -s https://raw.githubusercontent.com/illiterateTechpriest/whetstone/main/whetstone.sh  | bash
+```
+
+```
+./whetstone.sh --help
+Usage: whetstone.sh [option]
+  Options:
+    --crypto        Install additional packages for crypto pentesting
+    --ics           Install additional packages for ICS pentesting
+    --dark          Initialize dark theme
+    --light         Initialize light theme
+    --help          Display this message
 ```
 
 ## Default Features:
@@ -53,12 +66,12 @@ curl -k -s https://raw.githubusercontent.com/illiterateTechpriest/whetstone/main
 
 ## Optional Features
 
-- ```--ics``` enables optional installation of the following ICS/SCADA tools:
-    - [ControlThings.io's](https://github.com/ControlThings-io/) ICS/SCADA Tools:
-		- ctmodbus
-    	- ctserial
-    	- ctspi
-    	- cti2c
+- ```--ics``` enables optional installation of the following ICS tools:
+    - [ControlThings.io's:](https://www.controlthings.io/):
+		- [ctmodbus](https://github.com/ControlThings-io/ctmodbus)
+    	- [ctserial](https://github.com/ControlThings-io/ctserial)
+    	- [ctspi](https://github.com/ControlThings-io/ctspi)
+    	- [cti2c](https://github.com/ControlThings-io/cti2c)
 	- [killerbee](https://github.com/riverloopsec/killerbee)
 	- [plcscan](https://github.com/meeas/plcscan)
 	- [mbtget](https://github.com/sourceperl/mbtget)
