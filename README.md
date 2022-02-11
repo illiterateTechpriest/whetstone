@@ -67,7 +67,7 @@ Usage: whetstone.sh [option]
 ## Optional Features
 
 - ```--ics``` enables optional installation of the following ICS tools:
-    - [ControlThings.io's:](https://www.controlthings.io/):
+    - [ControlThings.io's:](https://www.controlthings.io/)
 		- [ctmodbus](https://github.com/ControlThings-io/ctmodbus)
     	- [ctserial](https://github.com/ControlThings-io/ctserial)
     	- [ctspi](https://github.com/ControlThings-io/ctspi)
